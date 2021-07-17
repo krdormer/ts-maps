@@ -1,9 +1,11 @@
 // Instructions to classes on how to use addMarker method
-interface MapEntity {
+export interface MapEntity {
   location: {
     lat: number;
     lng: number;
   };
+  color: string;
+  markerContent(): string;
 }
 
 export class CustomMap {
@@ -29,7 +31,7 @@ export class CustomMap {
 
     marker.addListener('click', () => {
       const window = new google.maps.InfoWindow({
-        content: 'Hi',
+        content: mapEntity.markerContent(),
       });
       window.open(this.googleMap, marker);
     });

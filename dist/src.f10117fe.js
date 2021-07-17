@@ -136888,6 +136888,7 @@ var Company =
 /** @class */
 function () {
   function Company() {
+    this.color = 'blue';
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
@@ -136895,6 +136896,10 @@ function () {
       lng: parseFloat(faker_1.default.address.longitude())
     };
   }
+
+  Company.prototype.markerContent = function () {
+    return "\n        <div>\n          <h1>Company Name: " + this.companyName + "</h1>\n          <h3>Catch Phrase: " + this.catchPhrase + "</h3>\n        </div>\n      ";
+  };
 
   return Company;
 }();
@@ -136920,12 +136925,17 @@ var User =
 /** @class */
 function () {
   function User() {
+    this.color = 'red';
     this.name = faker_1.default.name.firstName();
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
       lng: parseFloat(faker_1.default.address.longitude())
     };
   }
+
+  User.prototype.markerContent = function () {
+    return "User Name: " + this.name;
+  };
 
   return User;
 }();
@@ -136964,7 +136974,7 @@ function () {
     });
     marker.addListener('click', function () {
       var window = new google.maps.InfoWindow({
-        content: 'Hi'
+        content: mapEntity.markerContent()
       });
       window.open(_this.googleMap, marker);
     });
