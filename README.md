@@ -13,7 +13,6 @@ To use this project on your local machine:
     1: Clone a copy of the repo
     2: Copy an existing, or create a new API key with the Google Maps API service
     3: Delete 'ADD_YOUR_KEY' from the src string of the script tag with id='maps'
-    4: Install node_modules via npm install
-    5: In your terminal, run command:
+    4: In your terminal, run command:
         $ parcel index.html
-    6: Refresh to see new points on the map, and content!
+    5: Refresh to see new points on the map, and content!
