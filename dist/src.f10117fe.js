@@ -136953,12 +136953,20 @@ function () {
   }
 
   CustomMap.prototype.addMarker = function (mapEntity) {
-    new google.maps.Marker({
+    var _this = this;
+
+    var marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mapEntity.location.lat,
         lng: mapEntity.location.lng
       }
+    });
+    marker.addListener('click', function () {
+      var window = new google.maps.InfoWindow({
+        content: 'Hi'
+      });
+      window.open(_this.googleMap, marker);
     });
   };
 

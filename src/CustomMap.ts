@@ -19,12 +19,19 @@ export class CustomMap {
     });
   }
   addMarker(mapEntity: MapEntity): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mapEntity.location.lat,
         lng: mapEntity.location.lng,
       },
+    });
+
+    marker.addListener('click', () => {
+      const window = new google.maps.InfoWindow({
+        content: 'Hi',
+      });
+      window.open(this.googleMap, marker);
     });
   }
 }
