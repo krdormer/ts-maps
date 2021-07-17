@@ -136892,7 +136892,7 @@ function () {
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
-      long: parseFloat(faker_1.default.address.longitude())
+      lng: parseFloat(faker_1.default.address.longitude())
     };
   }
 
@@ -136923,7 +136923,7 @@ function () {
     this.name = faker_1.default.name.firstName();
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
-      long: parseFloat(faker_1.default.address.longitude())
+      lng: parseFloat(faker_1.default.address.longitude())
     };
   }
 
@@ -136952,22 +136952,12 @@ function () {
     });
   }
 
-  CustomMap.prototype.addUserMarker = function (user) {
+  CustomMap.prototype.addMarker = function (mapEntity) {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: user.location.lat,
-        lng: user.location.long
-      }
-    });
-  };
-
-  CustomMap.prototype.addCompany = function (company) {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.long
+        lat: mapEntity.location.lat,
+        lng: mapEntity.location.lng
       }
     });
   };
@@ -136992,8 +136982,8 @@ var CustomMap_1 = require("./CustomMap");
 var user = new User_1.User();
 var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map');
-customMap.addUserMarker(user);
-customMap.addCompany(company);
+customMap.addMarker(user);
+customMap.addMarker(company);
 },{"./Company":"src/Company.ts","./User":"src/User.ts","./CustomMap":"src/CustomMap.ts"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

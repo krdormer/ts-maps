@@ -1,5 +1,10 @@
-import { User } from './User';
-import { Company } from './Company';
+// Instructions to classes on how to use addMarker method
+interface MapEntity {
+  location: {
+    lat: number;
+    lng: number;
+  };
+}
 
 export class CustomMap {
   private googleMap: google.maps.Map;
@@ -13,21 +18,12 @@ export class CustomMap {
       },
     });
   }
-  addUserMarker(user: User): void {
+  addMarker(mapEntity: MapEntity): void {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: user.location.lat,
-        lng: user.location.long,
-      },
-    });
-  }
-  addCompany(company: Company): void {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.long,
+        lat: mapEntity.location.lat,
+        lng: mapEntity.location.lng,
       },
     });
   }
